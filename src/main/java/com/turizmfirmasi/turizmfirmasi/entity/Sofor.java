@@ -1,20 +1,11 @@
 package com.turizmfirmasi.turizmfirmasi.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-import sun.nio.cs.ext.Big5;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Setter
-@Getter
 @Entity
 public class Sofor {
 
@@ -36,12 +27,68 @@ public class Sofor {
     private BigDecimal yasi;
 
     @ManyToOne
-    @JoinColumn(name = "Otobus_id")
     private Otobus otobus;
 
+    public Otobus getOtobus() {
+        return otobus;
+    }
+
+    public void setOtobus(Otobus otobus) {
+        this.otobus = otobus;
+    }
+
+    public Terminal getTerminal() {
+        return terminal;
+    }
+
+    public void setTerminal(Terminal terminal) {
+        this.terminal = terminal;
+    }
+
     @ManyToOne
-    @JoinColumn(name = "Terminal_id")
     private Terminal terminal;
 
+    public Sofor() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getSoforIsmi() {
+        return soforIsmi;
+    }
+
+    public void setSoforIsmi(String soforIsmi) {
+        this.soforIsmi = soforIsmi;
+    }
+
+    public String getSoforSoyismi() {
+        return soforSoyismi;
+    }
+
+    public void setSoforSoyismi(String soforSoyismi) {
+        this.soforSoyismi = soforSoyismi;
+    }
+
+    public Date getSoforDogumYili() {
+        return soforDogumYili;
+    }
+
+    public void setSoforDogumYili(Date soforDogumYili) {
+        this.soforDogumYili = soforDogumYili;
+    }
+
+    public BigDecimal getYasi() {
+        return yasi;
+    }
+
+    public void setYasi(BigDecimal yasi) {
+        this.yasi = yasi;
+    }
 }
 

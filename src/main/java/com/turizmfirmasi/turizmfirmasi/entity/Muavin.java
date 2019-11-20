@@ -11,10 +11,6 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Setter
-@Getter
 @Entity
 public class Muavin {
 
@@ -35,16 +31,79 @@ public class Muavin {
     @Temporal(TemporalType.DATE)
     private Date muavinDogumYili;
 
+    public Otobus getOtobus() {
+        return otobus;
+    }
+
+    public void setOtobus(Otobus otobus) {
+        this.otobus = otobus;
+    }
+
+    public Firma getFirma() {
+        return firma;
+    }
+
+    public void setFirma(Firma firma) {
+        this.firma = firma;
+    }
+
+    public Terminal getTerminal() {
+        return terminal;
+    }
+
+    public void setTerminal(Terminal terminal) {
+        this.terminal = terminal;
+    }
+
     @OneToOne
-    @JoinColumn(name = "Otobus_id")
     private Otobus otobus;
 
     @ManyToOne
-    @JoinColumn(name = "Firma_id")
     private Firma firma;
 
     @ManyToOne
-    @JoinColumn(name = "Terminal_id")
     private Terminal terminal;
 
+    public Muavin() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getMuavinIsmi() {
+        return muavinIsmi;
+    }
+
+    public void setMuavinIsmi(String muavinIsmi) {
+        this.muavinIsmi = muavinIsmi;
+    }
+
+    public String getMuavinSoyIsmi() {
+        return muavinSoyIsmi;
+    }
+
+    public void setMuavinSoyIsmi(String muavinSoyIsmi) {
+        this.muavinSoyIsmi = muavinSoyIsmi;
+    }
+
+    public BigDecimal getMuavinYasi() {
+        return muavinYasi;
+    }
+
+    public void setMuavinYasi(BigDecimal muavinYasi) {
+        this.muavinYasi = muavinYasi;
+    }
+
+    public Date getMuavinDogumYili() {
+        return muavinDogumYili;
+    }
+
+    public void setMuavinDogumYili(Date muavinDogumYili) {
+        this.muavinDogumYili = muavinDogumYili;
+    }
 }

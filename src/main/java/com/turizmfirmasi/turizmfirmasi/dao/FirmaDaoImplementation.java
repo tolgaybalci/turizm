@@ -25,4 +25,17 @@ public class FirmaDaoImplementation {
         return firmaRepository.findById(id).orElse(null);
     }
 
+    public void updateFirma(Firma firma) {
+        Firma frm = firmaRepository.findById(firma.getId()).orElse(null);
+            frm.setFirmaIsmi(firma.getFirmaIsmi());
+            frm.setFirmaAdresi(firma.getFirmaAdresi());
+            frm.setCalisanSayisi(firma.getCalisanSayisi());
+            frm.setOtobusSayisi(firma.getOtobusSayisi());
+            firmaRepository.save(firma);
+    }
+
+    public void deleteFirma(String id) {
+        firmaRepository.delete(getFirmaById(id));
+    }
+
 }

@@ -17,6 +17,18 @@ public class OtobusDaoImplementation {
         otobusRepository.save(otobus);
     }
 
+    public void updateOtobus(Otobus otobus) {
+        Otobus oto = otobusRepository.findById(otobus.getId()).orElse(null);
+        oto.setKoltukSayisi(otobus.getKoltukSayisi());
+        oto.setOtobusModeli(otobus.getOtobusModeli());
+        oto.setPlaka(otobus.getPlaka());
+        otobusRepository.save(otobus);
+    }
+
+    public void deletOtobus(String id) {
+        otobusRepository.delete(getOtobusById(id));
+    }
+
     public List<Otobus> getAllOtobus(){
         return otobusRepository.findAll();
     }
