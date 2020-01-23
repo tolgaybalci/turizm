@@ -7,10 +7,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
-@RequestMapping("Muavinler")
+@RequestMapping("/muavinler")
 public class MuavinController {
 
     @Autowired
@@ -22,7 +23,7 @@ public class MuavinController {
     }
 
     @PostMapping
-    public ResponseEntity<Muavin> saveMavin(Muavin muavin){
+    public ResponseEntity<Muavin> saveMavin(@RequestBody Muavin muavin){
         muavinServiceImplementation.saveMuavin(muavin);
         return new ResponseEntity(null, HttpStatus.CREATED);
     }
@@ -45,4 +46,13 @@ public class MuavinController {
         return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }
 
+    @GetMapping("/get-by-yasi-kucuk-olan-muavinler/{yas}")
+    public ResponseEntity<List<Muavin>> findByMuavinYasiLessThan(@PathVariable("yas") BigDecimal yas){
+        return new ResponseEntity<List<Muavin>>(muavinServiceImplementation.findByMuavinYasiLessThan(yas), HttpStatus.OK);
+    }
+
+    @GetMapping("/yasi-kucuk-olan-muavinleri-listele/{yas}")
+    public ResponseEntity<List<Muavin>> yasiKucukOlanMuavinleriListele(@PathVariable("yas") BigDecimal yas){
+        return new ResponseEntity<List<Muavin>>(muavinServiceImplementation.yasiKucukOlanMuavinleriListele(yas), HttpStatus.OK);
+    }
 }

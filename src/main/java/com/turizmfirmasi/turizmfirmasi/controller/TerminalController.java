@@ -1,17 +1,17 @@
 package com.turizmfirmasi.turizmfirmasi.controller;
 
 import com.turizmfirmasi.turizmfirmasi.entity.Terminal;
-import com.turizmfirmasi.turizmfirmasi.service.ITerminalService;
 import com.turizmfirmasi.turizmfirmasi.serviceimplementation.TerminalServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
-@RequestMapping("Terminaller")
+@RequestMapping("/terminaller")
 public class TerminalController {
 
     @Autowired
@@ -23,7 +23,7 @@ public class TerminalController {
     }
 
     @PostMapping
-    public ResponseEntity<Terminal> saveTerminal(Terminal terminal){
+    public ResponseEntity<Terminal> saveTerminal(@RequestBody Terminal terminal){
         terminalServiceImplementation.saveTerminal(terminal);
         return new ResponseEntity(null, HttpStatus.CREATED);
     }
@@ -46,5 +46,8 @@ public class TerminalController {
         return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }
 
-
+    @GetMapping("/get-yolcu-kapasitesine-gore-terminalleri-listele")
+    public ResponseEntity<List<Terminal>> findByOrderByYolcuKapasitesiAsc() {
+          return new ResponseEntity<List<Terminal>>(terminalServiceImplementation.findByOrderByYolcuKapasitesiAsc(), HttpStatus.OK);
+    }
 }

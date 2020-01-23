@@ -40,6 +40,19 @@ public class Firma {
     @OneToMany
     private List<Muavin> muavin;
 
+    @OneToMany
+    private List<Sofor> sofor;
+
+    public List<Sofor> getSofor() {
+        return sofor;
+    }
+
+    public void setSofor(List<Sofor> sofor) {
+        this.sofor = sofor;
+    }
+
+
+
     public Firma() {
     }
 

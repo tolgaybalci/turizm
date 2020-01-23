@@ -5,6 +5,7 @@ import com.turizmfirmasi.turizmfirmasi.repository.MuavinRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Component
@@ -30,4 +31,12 @@ public class MuavinDaoImplementation {
     public List<Muavin> getAllMuavin(){ return muavinRepository.findAll(); }
 
     public Muavin getMuavinById(String id) { return muavinRepository.findById(id).orElse(null); }
+
+    public List<Muavin> findByMuavinYasiLessThan(BigDecimal yas){
+        return muavinRepository.findByMuavinYasiLessThan(yas);
+    }
+
+    public List<Muavin> yasiKucukOlanMuavinleriListele(BigDecimal yas){
+        return muavinRepository.yasiKucukOlanMuavinleriListele(yas);
+    }
 }

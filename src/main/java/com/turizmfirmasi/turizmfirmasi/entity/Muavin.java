@@ -31,6 +31,17 @@ public class Muavin {
     @Temporal(TemporalType.DATE)
     private Date muavinDogumYili;
 
+    @Column
+    private BigDecimal muavinMaas;
+
+    public BigDecimal getMuavinMaas() {
+        return muavinMaas;
+    }
+
+    public void setMuavinMaas(BigDecimal muavinMaas) {
+        this.muavinMaas = muavinMaas;
+    }
+
     public Otobus getOtobus() {
         return otobus;
     }

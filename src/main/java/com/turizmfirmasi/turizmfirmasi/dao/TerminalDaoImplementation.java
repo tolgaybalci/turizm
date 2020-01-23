@@ -5,6 +5,7 @@ import com.turizmfirmasi.turizmfirmasi.repository.TerminalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Component
@@ -37,4 +38,9 @@ public class TerminalDaoImplementation {
     public Terminal getTerminalById(String id){
         return terminalRepository.findById(id).orElse(null);
     }
+
+    public List<Terminal> findByOrderByYolcuKapasitesiAsc(){
+        return terminalRepository.findByOrderByYolcuKapasitesiAsc();
+    }
+
 }

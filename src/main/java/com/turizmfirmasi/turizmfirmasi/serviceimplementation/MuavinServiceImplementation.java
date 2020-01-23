@@ -5,6 +5,7 @@ import com.turizmfirmasi.turizmfirmasi.entity.Muavin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -31,5 +32,13 @@ public class MuavinServiceImplementation {
 
     public void deleteMuavin(String id) {
         muavinDAOImplementation.deleteMuavin(id);
+    }
+
+    public List<Muavin> findByMuavinYasiLessThan(BigDecimal yas){
+        return muavinDAOImplementation.findByMuavinYasiLessThan(yas);
+    }
+
+    public List<Muavin> yasiKucukOlanMuavinleriListele(BigDecimal yas){
+        return muavinDAOImplementation.yasiKucukOlanMuavinleriListele(yas);
     }
 }

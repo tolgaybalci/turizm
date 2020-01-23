@@ -26,6 +26,17 @@ public class Sofor {
     @Column
     private BigDecimal yasi;
 
+    @Column
+    private BigDecimal soforMaasi;
+
+    public BigDecimal getSoforMaasi() {
+        return soforMaasi;
+    }
+
+    public void setSoforMaasi(BigDecimal soforMaasi) {
+        this.soforMaasi = soforMaasi;
+    }
+
     @ManyToOne
     private Otobus otobus;
 

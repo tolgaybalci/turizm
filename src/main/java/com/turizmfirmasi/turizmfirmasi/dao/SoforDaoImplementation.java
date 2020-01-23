@@ -4,7 +4,10 @@ import com.turizmfirmasi.turizmfirmasi.entity.Sofor;
 import com.turizmfirmasi.turizmfirmasi.repository.SoforRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import sun.awt.image.PixelConverter;
 
+import java.math.BigDecimal;
+import java.text.Bidi;
 import java.util.List;
 
 @Component
@@ -31,4 +34,28 @@ public class SoforDaoImplementation {
     public List<Sofor> getAllSofor(){ return soforRepository.findAll(); }
 
     public Sofor getSoforById(String id){ return soforRepository.findById(id).orElse(null); }
+
+    public List<Sofor> findByYasiGreaterThan(BigDecimal yasi){
+        return soforRepository.findByYasiGreaterThan(yasi);
+    }
+
+    public List<Sofor> findYasiBuyukSoforler(BigDecimal sayi){
+        return soforRepository.findYasiBuyukSoforler(sayi);
+    }
+
+    public List<Sofor> findByYasiLessThanAndSoforMaasiGreaterThan(BigDecimal yas, BigDecimal soforMaasi){
+        return soforRepository.findByYasiLessThanAndSoforMaasiGreaterThan(yas, soforMaasi);
+    }
+
+    public List<Sofor> yasiKucukMaasiFazlaOlanSoforleriListele(BigDecimal yas, BigDecimal maas){
+        return soforRepository.yasiKucukMaasiFazlaOlanSoforleriListele(yas, maas);
+    }
+
+    public List<Sofor> findBySoforMaasiGreaterThan(BigDecimal sayi){
+        return soforRepository.findBySoforMaasiGreaterThan(sayi);
+    }
+
+    public List<Sofor> maasiBelirliBirMiktardanFazlaOlanlarıListele(BigDecimal sayi){
+        return soforRepository.maasiBelirliBirMiktardanFazlaOlanlarıListele(sayi);
+    }
 }
